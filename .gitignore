@@ -1,14 +1,60 @@
+# Node modules
 node_modules/
+
+# Expo specific
 .expo/
+
+# Build output
 dist/
+web-build/
+
+# npm logs
 npm-debug.*
+
+# Java Keystore files
 *.jks
+
+# Apple Provisioning Profiles
+*.mobileprovision
+
+# Apple Development Keys
 *.p8
 *.p12
 *.key
-*.mobileprovision
-*.orig.*
-web-build/
 
-# macOS
+# macOS files
 .DS_Store
+
+# IntelliJ IDEA
+.idea/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Windows OS files
+Thumbs.db
+ehthumbs.db
+
+# Babel and Webpack files
+.babelrc
+.webpack/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Test Coverage
+coverage/
+
+# App example
+app-example/
+
+# Expo automatic generated files
+expo-env.d.ts
+
