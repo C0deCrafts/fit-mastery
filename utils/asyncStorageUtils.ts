@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {FontSize, Theme} from "@/assets/types/styleTypes";
-import {Colors, darkColors, lightColors} from "@/constants/Colors";
+import {FontSize, Theme} from "@/constants/types/styleTypes";
+import {darkColors, lightColors} from "@/constants/Colors";
+import {Colors} from "@/constants/types/styleTypes";
 import {isDarkColor} from "@/utils/styleContextUtils";
 
 interface AppStyles {

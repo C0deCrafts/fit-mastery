@@ -1,4 +1,5 @@
 import {lightColors, darkColors} from "@/constants/Colors";
+import {Dimensions} from "react-native";
 /**
  * Checks if a given color is considered a "dark base color".
  * Dark base colors should have a light label, while other colors
@@ -56,3 +57,10 @@ export const getCorrespondingBaseColor = (
     // Return the corresponding color from the target color palette or a default color
     return matchingColorKey ? targetColors[matchingColorKey] : targetColors.teal_2;
 };
+
+
+export const isScreenHeightAtLeastIphone14 = () => {
+    const screenHeight = Dimensions.get("screen").height;
+    const iPhoneXHeight = 844;
+    return screenHeight >= iPhoneXHeight;
+}

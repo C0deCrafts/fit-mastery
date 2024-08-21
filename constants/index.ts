@@ -8,8 +8,6 @@ import { SecurityIcons } from "@/constants/Icons";
 import { SocialIcons } from "@/constants/Icons";
 import { UIIcons } from "@/constants/Icons";
 
-// Images
-
 // Styles
 import { ThemeSizes } from "@/constants/Sizes";
 import { Fonts } from "@/constants/Fonts";

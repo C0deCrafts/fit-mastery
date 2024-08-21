@@ -1,8 +1,8 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import {getCorrespondingBaseColor, isDarkColor} from "@/utils/styleContextUtils";
-import {Colors, darkColors, lightColors} from "@/constants/Colors";
+import {darkColors, lightColors} from "@/constants/Colors";
 import {xSmall, small, medium, large_default, xLarge, xxLarge} from "@/constants/FontSizes";
-import {FontSize, Theme } from "@/assets/types/styleTypes";
+import {Colors, FontSize, Theme} from "@/constants/types/styleTypes";
 import {loadStyles, saveStyles} from "@/utils/asyncStorageUtils";
 
 interface AppStyleContextType {
@@ -13,7 +13,6 @@ interface AppStyleContextType {
     changeFontSize: (size: FontSize) => void;
     toggleTheme: () => void;
 }
-
 /**
  * AppStyleProvider is a context provider component that manages the application's
  * style-related state, such as color scheme, font sizes, and base color.
@@ -151,7 +150,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
 export const useAppStyle = () => {
     const context = useContext(AppStyleContext);
     if (!context) {
-        throw new Error("useAppStyle must be used within a AppStyleProvider");
+        throw new Error("useAppStyle must be used within an AppStyleProvider");
     }
     return context;
 }
