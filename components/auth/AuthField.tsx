@@ -13,6 +13,7 @@ interface AuthFieldProps {
     isPassword?: boolean;
     returnKeyType?: "done" | "next";
     inputMode?: "text" | "email";
+    keyboardType?: "default" | "email-address";
     onChangeText: (text: string) => void;
     onSubmitEditing?: () => void;
 }
@@ -26,6 +27,7 @@ interface AuthFieldProps {
  * @param {boolean} [props.isPassword=false] - Optional: If true, the input is treated as a password field.
  * @param {"done" | "next"} [props.returnKeyType] - Optional: The return key type for the keyboard.
  * @param {"text" | "email"} [props.inputMode] - Optional: Specifies the input type (e.g., text or email).
+ * @param {"default" | "email-address"} [props.keyboardType] - Optional: Specifies the keyboard type (e.g., default or email).
  * @param {(text: string) => void} props.onChangeText - Callback function triggered when the text changes.
  * @param {() => void} [props.onSubmitEditing] - Optional: Callback function triggered when the return key is pressed.
  *
@@ -64,6 +66,7 @@ const AuthField = forwardRef<TextInput, AuthFieldProps>(({
                            returnKeyType={props.returnKeyType}
                            autoCapitalize="none"
                            keyboardAppearance={colorScheme === "light" ? "light" : "dark"}
+                           keyboardType={props.keyboardType}
                            maxLength={300}
                 />
                 {isPassword && (

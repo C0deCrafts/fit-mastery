@@ -1,30 +1,75 @@
 import { Tabs } from 'expo-router';
+import {useAppStyle} from "@/context/AppStyleContext";
+import {Icons, ThemeSizes} from "@/constants";
+import TabIcon from "@/components/navigation/TabBarIcon";
 
 export default function TabsLayout() {
+    const {colors} = useAppStyle();
+
     return (
-        <Tabs>
+        <Tabs screenOptions={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarActiveTintColor: colors.baseColor,
+            tabBarInactiveTintColor: colors.secondaryLabel,
+            tabBarStyle: {
+                backgroundColor: "transparent",
+                borderTopWidth: 0,
+                paddingHorizontal: ThemeSizes.Spacing.tabBarHorizontal,
+                position: "absolute",
+                elevation: 0,
+            },
+        }}>
             <Tabs.Screen
                 name="(chat)"
                 options={{
-                    title: 'Chat',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabIcon
+                            icon={Icons.friends}
+                            color={color} name="Chat"
+                            focused={focused}
+                        />
+                    ),
+                    headerShadowVisible: false,
                 }}
             />
             <Tabs.Screen
                 name="(homes)"
                 options={{
-                    title: 'Homes',
-                }}
-            />
-            <Tabs.Screen
-                name="(settings)"
-                options={{
-                    title: 'Settings',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabIcon
+                            icon={Icons.profile}
+                            color={color} name="Home"
+                            focused={focused}
+                        />
+                    ),
+                    headerShadowVisible: false,
                 }}
             />
             <Tabs.Screen
                 name="(training)"
                 options={{
-                    title: 'Training',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabIcon
+                            icon={Icons.barbell}
+                            color={color} name="Training"
+                            focused={focused}
+                        />
+                    ),
+                    headerShadowVisible: false,
+                }}
+            />
+            <Tabs.Screen
+                name="(settings)"
+                options={{
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabIcon
+                            icon={Icons.setting}
+                            color={color} name="Einstellungen"
+                            focused={focused}
+                        />
+                    ),
+                    headerShadowVisible: false,
                 }}
             />
             <Tabs.Screen

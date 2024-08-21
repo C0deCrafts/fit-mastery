@@ -57,7 +57,7 @@ app-example/
 # Expo automatic generated files
 expo-env.d.ts
 
-# Firebase credentials
-credentials.json
+# credentials
+credentials/
 
 # No android/ or ios/ folders ignored because they are needed for the project

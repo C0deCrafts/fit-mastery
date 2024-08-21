@@ -43,6 +43,7 @@ const SignInForm = (props :SignInFormProps) => {
                        onChangeText={props.setEmail}
                        returnKeyType="next"
                        inputMode="email"
+                       keyboardType="email-address"
                        onSubmitEditing={() => passwordRef.current?.focus()}
             />
             <Spacing bottom={ThemeSizes.Spacing.extraSmall}/>

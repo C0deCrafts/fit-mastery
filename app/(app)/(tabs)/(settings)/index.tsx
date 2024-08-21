@@ -3,16 +3,18 @@ import {useAppStyle} from "@/context/AppStyleContext";
 import {FontSize} from "@/constants/types/styleTypes";
 import {xSmall} from "@/constants/FontSizes";
 import {useAuth} from "@/context/AuthContext";
+import Header from "@/components/header/Header";
+import AppSymbolBackground from "@/components/background/AppSymbolBackground";
 
 const SettingsIndex = () => {
-    const { colors, colorScheme, fontSizes, toggleTheme, changeBaseColor, changeFontSize} = useAppStyle();
-const {deleteUserData} = useAuth();
+    const {colors, colorScheme, fontSizes, toggleTheme, changeBaseColor, changeFontSize} = useAppStyle();
+    const {deleteUserData} = useAuth();
 
-    const handleColorChange = (color : string) => {
+    const handleColorChange = (color: string) => {
         changeBaseColor(color);
     };
 
-    const handleFontSizeChange = (size : FontSize) => {
+    const handleFontSizeChange = (size: FontSize) => {
         changeFontSize(size);
     }
 
@@ -22,18 +24,23 @@ const {deleteUserData} = useAuth();
     }
 
     return (
-        <View style={[styles.container, {backgroundColor: colors.primary}]}>
-            <View style={{backgroundColor: colors.baseColor, padding: 20}}>
-                <Text style={{
-                    color: colors.colorButtonLabel,
-                    fontSize: fontSizes.title1,
-                }}>Current theme: {colorScheme}</Text>
-            </View>
-            <Button title="Toggle Theme" onPress={toggleTheme} />
-            <Button title="Change Base Color" onPress={() => handleColorChange(colors.pink_2)} />
-            <Button title="Change Text Size" onPress={() => handleFontSizeChange(xSmall)} />
-            <Button title="Delete User Data" onPress={deleteUser} />
-        </View>
+        <>
+            <Header title="Einstellungen" logOutButtonVisible/>
+            <AppSymbolBackground>
+                <View style={styles.container}>
+                    <View style={{backgroundColor: colors.baseColor, padding: 20}}>
+                        <Text style={{
+                            color: colors.colorButtonLabel,
+                            fontSize: fontSizes.title1,
+                        }}>Current theme: {colorScheme}</Text>
+                    </View>
+                    <Button title="Toggle Theme" onPress={toggleTheme}/>
+                    <Button title="Change Base Color" onPress={() => handleColorChange(colors.pink_2)}/>
+                    <Button title="Change Text Size" onPress={() => handleFontSizeChange(xSmall)}/>
+                    <Button title="Delete User Data" onPress={deleteUser}/>
+                </View>
+            </AppSymbolBackground>
+        </>
     );
 }
 
