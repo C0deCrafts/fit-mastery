@@ -1,6 +1,4 @@
-export interface Colors {
-        [key: string]: string; // Erlaubt beliebige Schlüssel mit einem Wert vom Typ string
-}
+import {Colors} from "@/constants/types/styleTypes";
 /**
  * Color palettes for light and dark mode.
  * Each palette contains a set of primary, secondary, and neutral colors,
@@ -31,8 +29,11 @@ export const lightColors: Colors = {
         gray_4: "rgb(209,209,214)",
         gray_5: "rgb(229,229,234)",
         gray_6: "rgb(242,242,247)",
+        black: "rgb(0,0,0)",
+        white: "rgb(255,255,255)",
         primary: "rgb(242,242,247)",
         secondary: "rgb(255,255,255)",
+        secondaryTransparent: "rgba(255,255,255,0.7)",
         label: "rgb(0,0,0)",
         secondaryLabel: "rgba(60,60,67,0.6)",
         tertiaryLabel: "rgba(60,60,67,0.3)",
@@ -41,7 +42,7 @@ export const lightColors: Colors = {
         separator: "rgba(0,0,0,0.29)",
         opaqueSeparator: "rgb(198,198,200)",
         link: "rgb(0,122,255)",
-        darkNeutral: "rgb(0,0,0)",
+        darkNeutral: "rgb(30,30,30)",
         lightNeutral: "rgb(255,255,255)"
     }
 
@@ -70,8 +71,11 @@ export const darkColors: Colors = {
         gray_4: "rgb(58,58,60)",
         gray_5: "rgb(44,44,46)",
         gray_6: "rgb(28,28,30)",
+        black: "rgb(0,0,0)",
+        white: "rgb(255,255,255)",
         primary: "rgb(0,0,0)",
         secondary: "rgb(28,28,30)",
+        secondaryTransparent: "rgba(28,28,30,0.7)",
         label: "rgb(255,255,255)",
         secondaryLabel: "rgba(235,235,245,0.6)",
         tertiaryLabel: "rgba(235,235,245,0.3)",
@@ -80,6 +84,6 @@ export const darkColors: Colors = {
         separator: "rgba(84,84,88,0.6)",
         opaqueSeparator: "rgba(56,56,58)",
         link: "rgb(9,132,255)",
-        darkNeutral: "rgb(0,0,0)",
+        darkNeutral: "rgb(30,30,30)",
         lightNeutral: "rgb(255,255,255)"
 };

@@ -44,10 +44,9 @@ ehthumbs.db
 
 # Environment variables
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+txt.env.development.txt
+txt.env.test.txt
+.env.production
 
 # Test Coverage
 coverage/
@@ -58,3 +57,7 @@ app-example/
 # Expo automatic generated files
 expo-env.d.ts
 
+# Firebase credentials
+credentials.json
+
+# No android/ or ios/ folders ignored because they are needed for the project

@@ -1,3 +1,18 @@
+/**
+ * Font size definitions for extra small screen sizes.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const xSmall = {
     largeTitle: 31,
     title1: 25,
@@ -12,6 +27,21 @@ export const xSmall = {
     caption2: 11,
 };
 
+/**
+ * Font size definitions for small screen sizes.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const small = {
     largeTitle: 32,
     title1: 26,
@@ -26,6 +56,21 @@ export const small = {
     caption2: 11,
 };
 
+/**
+ * Font size definitions for medium screen sizes.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const medium = {
     largeTitle: 33,
     title1: 27,
@@ -40,6 +85,21 @@ export const medium = {
     caption2: 11,
 };
 
+/**
+ * Font size definitions for large screen sizes, this is the default setting.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const large_default = {
     largeTitle: 34,
     title1: 28,
@@ -54,6 +114,21 @@ export const large_default = {
     caption2: 11,
 };
 
+/**
+ * Font size definitions for extra large screen sizes.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const xLarge = {
     largeTitle: 38,
     title1: 32,
@@ -68,6 +143,21 @@ export const xLarge = {
     caption2: 15,
 };
 
+/**
+ * Font size definitions for extra, extra large screen sizes.
+ *
+ * @property {number} largeTitle - Font size for large titles.
+ * @property {number} title1 - Font size for primary titles.
+ * @property {number} title2 - Font size for secondary titles.
+ * @property {number} title3 - Font size for tertiary titles.
+ * @property {number} headline - Font size for headlines.
+ * @property {number} body - Font size for body text.
+ * @property {number} callout - Font size for callouts.
+ * @property {number} subhead - Font size for subheadings.
+ * @property {number} footnote - Font size for footnotes.
+ * @property {number} caption1 - Font size for primary captions.
+ * @property {number} caption2 - Font size for secondary captions.
+ */
 export const xxLarge = {
     largeTitle: 36,
     title1: 30,

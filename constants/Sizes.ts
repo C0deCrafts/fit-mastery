@@ -9,6 +9,8 @@ const Radius = {
     modal: 16,
     /** Standard radius for images (8px) */
     image: 8,
+    /** Standard radius for inputs (10px) */
+    input: 10,
     /** Standard radius for icons (20px) */
     icon: 20,
     /** Full round radius, usually for avatars (50px) */
@@ -35,7 +37,7 @@ const Spacing = {
     /** Extra small spacing around an element (5px) */
     aroundExtraSmall: 5,
     /** Extra large spacing (30px) */
-    extraLarge: 30,
+    extraLarge: 40,
     /** Extra standard spacing (20px) */
     extraDefault: 20,
     /** Extra small spacing (10px) */
@@ -59,12 +61,22 @@ const Spacing = {
 };
 
 const Sizes = {
+    /** Size for large icons (40px) */
+    largeIcon: 40,
     /** Size for small icons (15px) */
     smallIcon: 15,
+    /** Size for lock icons (20px) */
+    lockIcon: 20,
     /** Background image position when there is a header (0px) */
     backgroundImagePositionTopWithHeader: 0,
     /** Background image position when there is no header (60px) */
     backgroundImagePositionTopNoHeader: 60,
+    /** Height of the auth fields (60px) */
+    authFieldHeight: 60,
+    /** Height of the buttons (60px) */
+    buttonHeight: 60,
+    /** Size of the logo (200px) */
+    logo: 130
 };
 
 export const ThemeSizes = {
