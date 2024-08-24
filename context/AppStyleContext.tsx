@@ -9,6 +9,7 @@ interface AppStyleContextType {
     colors: Colors;
     colorScheme: Theme;
     fontSizes: FontSize;
+    currentFontSize: string;
     changeBaseColor: (color: string) => void;
     changeFontSize: (size: string) => void;
     toggleTheme: () => void;
@@ -40,6 +41,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
             colorButtonLabel: lightColors.lightNeutral
         }
     )
+    const [currentFontSize, setCurrentFontSize] = useState("large_default");
 
     /**
      * Loads the saved style settings from AsyncStorage when the component mounts.
@@ -120,9 +122,8 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
                 default:
                     newFontSizes = large_default;
             }
-
+            setCurrentFontSize(size); // save the current font size as string for the modal picker
             setFontSizes(newFontSizes);
-            //saveStyles('fontSize', size);
         };
 
     /**
@@ -138,6 +139,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
             colors,
             colorScheme,
             fontSizes,
+            currentFontSize,
             toggleTheme,
             changeBaseColor,
             changeFontSize

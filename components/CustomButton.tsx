@@ -13,7 +13,6 @@ interface CustomButtonProps {
  * The styles are generated based on the current theme's font sizes and colors, which are provided by the useAppStyle context.
  *
  * @param {CustomButtonProps} props - The properties for configuring the CustomButton component.
- * @param {boolean} [props.isLoading=false] - Optional: If true, the button appears in a loading state (with reduced opacity).
  * @param {string} props.title - The text label to display on the button.
  * @param {() => void} props.onPress - The callback function triggered when the button is pressed.
  *
@@ -21,18 +20,16 @@ interface CustomButtonProps {
  * <CustomButton
  *    title="Click Me"
  *    onPress={() => console.log('Button pressed')}
- *    isLoading={false}
  * />
  */
 const CustomButton = ({
-                          isLoading = false, // Default value for isLoading is false
                           ...props}:CustomButtonProps) => {
     const {fontSizes, colors} = useAppStyle(); // Extracting font sizes and colors from the app style context
     const styles = dynamicStyles(fontSizes, colors); // Creating dynamic styles based on the current theme
 
     return (
         <TouchableOpacity onPress={props.onPress}
-                          style={[styles.container, isLoading && styles.loading]}
+                          style={styles.container}
         >
             <Text style={styles.label}>{props.title}</Text>
         </TouchableOpacity>
@@ -59,9 +56,6 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
             color: colors.white,
             fontFamily: Fonts.semiBold,
             fontSize: fontSizes.title3
-        },
-        loading: {
-            opacity: 0.5
         }
     })
 }

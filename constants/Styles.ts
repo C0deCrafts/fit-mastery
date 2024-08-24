@@ -7,7 +7,7 @@ export const appStyles = (fontSizes: FontSize, colors: Colors) => {
     return StyleSheet.create({
         container: {
             flex: 1,
-            padding: ThemeSizes.Spacing.aroundDefault,
+            paddingHorizontal: ThemeSizes.Spacing.horizontalDefault,
             backgroundColor: colors.primary,
         },
         descriptionContainer: {

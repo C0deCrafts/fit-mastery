@@ -7,18 +7,18 @@ import {Fonts, ThemeSizes} from "@/constants";
 import {router} from "expo-router";
 import {appStyles} from "@/constants/Styles";
 import Spacing from "@/components/spacing/Spacing";
+import {Loading} from "@/components/Loading";
 
 const DeleteUserModal = () => {
     const {colors, fontSizes} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
     const defaultStyles = appStyles(fontSizes, colors);
-    const {deleteUserData} = useAuth();
+    const {deleteUserData, isLoading} = useAuth();
 
     // Handle user deletion
     const handleDeleteUser = async () => {
         await deleteUserData().then(() => {
             Alert.alert("Hinweis", "Dein Konto wurde erfolgreich gelöscht.");
-            router.replace("../"); // Optionally navigate to another screen after deletion
         });
     };
 
@@ -75,13 +75,12 @@ const DeleteUserModal = () => {
                     >
                         <Text style={styles.link}>Abbrechen</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={handleDeleteUser}
-                        //style={[styles.container, isLoading && styles.loading]}
-                    >
+                    <TouchableOpacity onPress={handleDeleteUser}>
                         <Text style={styles.link}>Bestätigen</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
+            {isLoading && <Loading/>}
         </View>
     );
 };
@@ -91,17 +90,17 @@ export default DeleteUserModal;
 const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
     return StyleSheet.create({
         topBar: {
-            height: 5, // Height of the bar
-            backgroundColor: colors.baseColor, // Color of the bar
+            height: 5,
+            backgroundColor: colors.baseColor,
             borderRadius: 2,
-            width: "20%", // Full width of the screen
-            marginBottom: ThemeSizes.Spacing.verticalSmall, // Space below the bar
-            alignSelf: "center", // Center the bar
+            width: "20%",
+            marginVertical: ThemeSizes.Spacing.verticalSmall,
+            alignSelf: "center",
         },
         row: {
             flexDirection: "row",
             justifyContent: "space-between",
-            marginVertical: ThemeSizes.Spacing.extraLarge, // Adding some space around the buttons
+            marginVertical: ThemeSizes.Spacing.extraLarge,
         },
         link: {
             fontSize: fontSizes.title3,

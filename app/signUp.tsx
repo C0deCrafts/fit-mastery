@@ -20,6 +20,7 @@ import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";
 import {isScreenHeightAtLeastIphone14} from "@/utils/styleContextUtils";
 import SignUpForm from "@/components/auth/SignUpForm";
+import {Loading} from "@/components/Loading";
 /**
  * SignUp is a page that provides a user interface for creating a new account.
  * It includes a form for entering a username, email, password, and password confirmation,
@@ -93,7 +94,7 @@ const SignUp = () => {
                             handleSignUp={handleSignUp}
                         />
                         <Spacing bottom={ThemeSizes.Spacing.extraLarge}/>
-                        <CustomButton onPress={handleSignUp} title={"Registrieren"} isLoading={isLoading}/>
+                        <CustomButton onPress={handleSignUp} title={"Registrieren"}/>
                         <Spacing vertical={ThemeSizes.Spacing.verticalSmall}>
                             <Text style={styles.text}>oder</Text>
                         </Spacing>
@@ -110,6 +111,7 @@ const SignUp = () => {
                     </View>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
+            {isLoading && <Loading/>}
         </AppImageBackground>
     )
 }

@@ -20,6 +20,7 @@ import {router} from "expo-router";
 import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";
 import SignInForm from "@/components/auth/SignInForm";
+import {Loading} from "@/components/Loading";
 
 /**
  * SignIn is a page that provides a user interface for signing into an account.
@@ -87,7 +88,7 @@ const SignIn = () => {
                         <Text style={styles.textForgotPassword} onPress={handleForgotPassword}>Password
                             vergessen? </Text>
                         <Spacing bottom={ThemeSizes.Spacing.extraLarge}/>
-                        <CustomButton onPress={handleSignIn} title={"Login"} isLoading={isLoading}/>
+                        <CustomButton onPress={handleSignIn} title={"Login"}/>
                         <Spacing vertical={ThemeSizes.Spacing.verticalSmall}>
                             <Text style={styles.text}>oder</Text>
                         </Spacing>
@@ -104,6 +105,7 @@ const SignIn = () => {
                     <Spacing bottom={ThemeSizes.Spacing.extraDefault}/>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
+            {isLoading && <Loading/>}
         </AppImageBackground>
     )
 }

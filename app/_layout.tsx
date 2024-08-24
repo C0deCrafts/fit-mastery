@@ -19,7 +19,7 @@ export default function RootLayout() {
         "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
         "Jura-Regular": require("../assets/fonts/Jura-Regular.ttf"),
     });
-  // Show nothing until fonts are loaded or if there is an error
+    // Show nothing until fonts are loaded or if there is an error
     if (!fontsLoaded && !error) return null;
 
     return (

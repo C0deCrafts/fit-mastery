@@ -78,23 +78,30 @@ export function AuthProvider({children}: AuthProviderProps) {
         });
     };
 
-    // sign out the current user
+    // sign out the current user (evtl. kein loading - dauert nicht lang)
     const signOut = async () => {
+        setIsLoading(true);
         await auth()
             .signOut()
-            .then(() => console.log('User signed out!'));
+            .then(() => console.log('User signed out!'))
+            .finally(() => {
+                setIsLoading(false);
+            });
     }
 
     const deleteUserData = async () => {
         const auth = getAuth();
         const user: FirebaseAuthTypes.User | null = auth.currentUser;
+        setIsLoading(true);
 
         if(user){
             await deleteUser(user).then(()=> {
                 console.log("User deleted!")
             }).catch((err)=> {
                 console.error("Error deleting user: ", err);
-            })
+            }).finally(() => {
+                setIsLoading(false);
+            });
         }
     }
 

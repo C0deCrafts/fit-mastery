@@ -31,7 +31,7 @@ import {appStyles} from "@/constants/Styles";
  * - Adjusting text size via a modal picker.
  */
 const SettingsIndex = () => {
-    const {colors, colorScheme, fontSizes, toggleTheme, changeBaseColor, changeFontSize} = useAppStyle();
+    const {colors, colorScheme, fontSizes, currentFontSize, toggleTheme, changeBaseColor, changeFontSize} = useAppStyle();
     const {user} = useAuth();
 
     const [selectedFontsize, setSelectedFontsize] = useState("large_default");
@@ -42,16 +42,16 @@ const SettingsIndex = () => {
     const selectedColors = userColors(colors);
 
     useEffect(() => {
-        console.log("Selected FontSize: ", selectedFontsize);
-    }, [selectedFontsize]);
+        setSelectedFontsize(currentFontSize);
+    }, [currentFontSize]);
 
     const styles = dynamicStyles(fontSizes, colors);
     const defaultStyles = appStyles(fontSizes, colors);
 
     const handleFontSizeChange = (itemValue:string) => {
-        {/*<Button title="Change Text Size" onPress={() => handleFontSizeChange(xSmall)}/>*/}
         setSelectedFontsize(itemValue);
         changeFontSize(itemValue);
+        toggleModal();
     }
 
     const toggleModal = () => {
@@ -191,7 +191,6 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
         },
         radioGroupContainer: {
             flexDirection: "row",
-            //justifyContent: "space-evenly",
             gap: 90,
         },
         modalText: {
