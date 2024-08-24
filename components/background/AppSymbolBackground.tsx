@@ -5,6 +5,7 @@ import {ReactNode} from "react";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Colors} from "@/constants/types/styleTypes";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {blurHash} from "@/utils/common";
 
 interface ImageBackgroundContainerProps {
     children: ReactNode
@@ -31,12 +32,15 @@ const AppImageBackground = ({children}: ImageBackgroundContainerProps) => {
     const bottomTabSpacing = insets.bottom - 25;
     const styles = dynamicStyles(colors, bottomTabSpacing);
 
+
     return (
         <View style={styles.container}>
             <Image
                 source={Images.backgroundSymbol}
                 contentFit="cover"
                 style={styles.image}
+                placeholder={blurHash}
+                transition={1000}
             />
             {children}
         </View>

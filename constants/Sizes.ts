@@ -46,6 +46,8 @@ const Spacing = {
     extraExtraSmall: 5,
     /** Spacing from the header (15px) */
     fromHeader: 15,
+    /** Spacing from the bottom tabs (80px) */
+    fromBottomTabs: 80,
     /** Vertical spacing in the tab bar (10px) */
     tabBarVertical: 10,
     /** Horizontal spacing in the tab bar (10px) */

@@ -9,7 +9,6 @@ interface AppStyles {
     fontSizes: FontSize;
     baseColor: string;
 }
-
 /**
  * Saves the current app style settings, including color scheme, font size, and base color,
  * to AsyncStorage. This allows for persistent storage of user preferences across app sessions.

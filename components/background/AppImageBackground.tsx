@@ -10,7 +10,6 @@ import {ReactNode} from "react";
 interface ImageBackgroundContainerProps {
     children: ReactNode
 }
-
 /**
  * AppImageBackground Component
  *

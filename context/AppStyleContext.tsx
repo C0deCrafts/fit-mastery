@@ -10,7 +10,7 @@ interface AppStyleContextType {
     colorScheme: Theme;
     fontSizes: FontSize;
     changeBaseColor: (color: string) => void;
-    changeFontSize: (size: FontSize) => void;
+    changeFontSize: (size: string) => void;
     toggleTheme: () => void;
 }
 /**
@@ -99,22 +99,22 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
      *
      * @param {FontSize} size - The new font size to set.
      */
-    const changeFontSize = (size: FontSize) => {
+    const changeFontSize = (size: string) => {
             let newFontSizes;
             switch (size) {
-                case xSmall:
+                case "xSmall":
                     newFontSizes = xSmall;
                     break;
-                case small:
+                case "small":
                     newFontSizes = small;
                     break;
-                case medium:
+                case "medium":
                     newFontSizes = medium;
                     break;
-                case xLarge:
+                case "xLarge":
                     newFontSizes = xLarge;
                     break;
-                case xxLarge:
+                case "xxLarge":
                     newFontSizes = xxLarge;
                     break;
                 default:

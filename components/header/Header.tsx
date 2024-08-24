@@ -14,7 +14,27 @@ interface HeaderProps {
     chatAvatarVisible?: boolean;
     imageUrl?: string;
 }
-
+/**
+ * Header is a reusable component that displays a customizable header for the app.
+ * The header includes options for a back button, logout button, and a chat avatar,
+ * with dynamic styles based on the current theme's font sizes and colors.
+ *
+ * @param {HeaderProps} props - The properties for configuring the Header component.
+ * @param {string} props.title - The title text to display in the header.
+ * @param {boolean} [props.backButtonVisible=false] - Optional: If true, displays a back button in the header.
+ * @param {boolean} [props.logOutButtonVisible=false] - Optional: If true, displays a logout button in the header.
+ * @param {boolean} [props.chatAvatarVisible=false] - Optional: If true, displays a chat avatar in the header.
+ * @param {string} [props.imageUrl] - Optional: The URL for the chat avatar image.
+ *
+ * @example
+ * <Header
+ *    title="Home"
+ *    backButtonVisible={true}
+ *    logOutButtonVisible={true}
+ *    chatAvatarVisible={true}
+ *    imageUrl="https://example.com/avatar.jpg"
+ * />
+ */
 const Header = (props:HeaderProps) => {
     const {signOut} = useAuth();
     const {fontSizes, colors} = useAppStyle();

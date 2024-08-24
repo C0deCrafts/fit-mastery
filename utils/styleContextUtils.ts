@@ -1,5 +1,6 @@
-import {lightColors, darkColors} from "@/constants/Colors";
+import {darkColors, lightColors} from "@/constants/Colors";
 import {Dimensions} from "react-native";
+import {Colors} from "@/constants/types/styleTypes";
 /**
  * Checks if a given color is considered a "dark base color".
  * Dark base colors should have a light label, while other colors
@@ -14,6 +15,7 @@ export const isDarkColor = (color: string): boolean => {
         lightColors.teal_2, lightColors.cyan_2, lightColors.blue,
         lightColors.indigo, lightColors.indigo_2, lightColors.purple,
         lightColors.purple_2, lightColors.pink, lightColors.pink_2,
+        lightColors.custom,
 
         darkColors.red, darkColors.blue, darkColors.indigo,
         darkColors.purple, darkColors.pink,
@@ -24,6 +26,30 @@ export const isDarkColor = (color: string): boolean => {
     return isDark;
 };
 
+export const userColors = (colors: Colors): string[] => {
+    return [
+        colors.red,
+        colors.orange,
+        colors.yellow,
+        colors.green,
+        colors.mint,
+        colors.mint_2,
+        colors.teal,
+        colors.teal_2,
+        colors.cyan,
+        colors.cyan_2,
+        colors.blue,
+        colors.indigo,
+        colors.indigo_2,
+        colors.purple,
+        colors.purple_2,
+        colors.pink,
+        colors.pink_2,
+        colors.brown,
+        colors.gray,
+        colors.custom,
+    ];
+};
 /**
  * Finds the corresponding base color from the opposite color scheme.
  * This function helps in switching themes (e.g., from dark to light mode)

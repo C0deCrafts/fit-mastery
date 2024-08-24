@@ -130,17 +130,17 @@ export const large_default = {
  * @property {number} caption2 - Font size for secondary captions.
  */
 export const xLarge = {
-    largeTitle: 38,
-    title1: 32,
-    title2: 26,
-    title3: 24,
-    headline: 21,
-    body: 21,
-    callout: 20,
-    subhead: 19,
-    footnote: 17,
-    caption1: 16,
-    caption2: 15,
+    largeTitle: 36,
+    title1: 30,
+    title2: 24,
+    title3: 22,
+    headline: 19,
+    body: 19,
+    callout: 18,
+    subhead: 17,
+    footnote: 15,
+    caption1: 14,
+    caption2: 13,
 };
 
 /**
@@ -159,15 +159,15 @@ export const xLarge = {
  * @property {number} caption2 - Font size for secondary captions.
  */
 export const xxLarge = {
-    largeTitle: 36,
-    title1: 30,
-    title2: 24,
-    title3: 22,
-    headline: 19,
-    body: 19,
-    callout: 18,
-    subhead: 17,
-    footnote: 15,
-    caption1: 14,
-    caption2: 13,
+    largeTitle: 38,
+    title1: 32,
+    title2: 26,
+    title3: 24,
+    headline: 21,
+    body: 21,
+    callout: 20,
+    subhead: 19,
+    footnote: 17,
+    caption1: 16,
+    caption2: 15,
 };

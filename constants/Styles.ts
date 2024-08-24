@@ -1,7 +1,30 @@
 import { StyleSheet } from 'react-native';
+import { ThemeSizes } from "@/constants/Sizes";
+import { Fonts } from "@/constants/Fonts";
+import { Colors, FontSize } from "@/constants/types/styleTypes";
 
-export const defaultStyles = StyleSheet.create({
-    separator: {
-        height: StyleSheet.hairlineWidth,
-    }
-});
+export const appStyles = (fontSizes: FontSize, colors: Colors) => {
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            padding: ThemeSizes.Spacing.aroundDefault,
+            backgroundColor: colors.primary,
+        },
+        descriptionContainer: {
+            marginBottom: ThemeSizes.Spacing.titleSpacingBottom
+        },
+        description: {
+            fontSize: fontSizes.subhead,
+            fontFamily: Fonts.regular,
+            color: colors.label,
+        },
+        titleDescription: {
+            fontSize: fontSizes.subhead,
+            fontFamily: Fonts.semiBold,
+            color: colors.baseColor,
+        },
+        separator: {
+            //height: StyleSheet.hairlineWidth,
+        },
+    });
+};

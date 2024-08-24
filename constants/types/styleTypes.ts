@@ -1,4 +1,4 @@
-import { large_default, small, medium, xLarge, xxLarge } from "@/constants/FontSizes";
+import {large_default, small, medium, xLarge, xxLarge, xSmall} from "@/constants/FontSizes";
 
 /**
  * Defines the available themes for the application.
@@ -22,7 +22,7 @@ export type Theme = "light" | "dark";
  * - xLarge: Font sizes for extra large screens.
  * - xxLarge: Font sizes for double extra large screens.
  */
-export type FontSize = typeof large_default | typeof small | typeof medium | typeof xLarge | typeof xxLarge;
+export type FontSize = typeof xSmall | typeof small | typeof medium | typeof large_default | typeof xLarge | typeof xxLarge;
 
 /**
  * A list of keys representing the available colors in the application.
