@@ -8,7 +8,6 @@ export const appStyles = (fontSizes: FontSize, colors: Colors) => {
         container: {
             flex: 1,
             paddingHorizontal: ThemeSizes.Spacing.horizontalDefault,
-            backgroundColor: colors.primary,
         },
         descriptionContainer: {
             marginBottom: ThemeSizes.Spacing.titleSpacingBottom

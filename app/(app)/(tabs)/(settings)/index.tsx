@@ -88,7 +88,7 @@ const SettingsIndex = () => {
                                     imageRadius={80}
                             />
                             <View>
-                                <Text style={styles.userName} numberOfLines={1} ellipsizeMode={"tail"}>Username</Text>
+                                <Text style={styles.userName} numberOfLines={1} ellipsizeMode={"tail"}>{user?.displayName}</Text>
                                 <Text style={styles.email} numberOfLines={1}
                                       ellipsizeMode={"tail"}>{user?.email?.toLowerCase()}</Text>
                             </View>

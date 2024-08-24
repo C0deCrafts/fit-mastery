@@ -2,7 +2,8 @@ import {StyleSheet, View, TouchableOpacity} from 'react-native'
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Image} from "expo-image";
 import {blurHash} from "@/utils/common"
-import {Icons, Images} from "@/constants";
+import {Icons} from "@/constants";
+import {useAuth} from "@/context/AuthContext";
 
 interface AvatarProps {
     imageRadius?: number;
@@ -34,6 +35,7 @@ const Avatar = ({
                     isCameraVisible = true
                 }: AvatarProps) => {
     const {colors} = useAppStyle();
+    const {user} = useAuth();
 
     const handleProfileImageChange = () => {
         console.log("Change Profile Image - later in AccountSettings Context")
@@ -48,7 +50,7 @@ const Avatar = ({
                 borderRadius: imageRadius / 2,
             }]}>
                 <Image
-                    source={Images.backgroundMale}
+                    source={user?.photoURL}
                     style={{
                         width: imageRadius,
                         height: imageRadius,

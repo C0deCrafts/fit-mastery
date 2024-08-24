@@ -36,7 +36,7 @@ const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {isLoading, signIn} = useAuth();
+    const {isLoading, signIn, resetPassword} = useAuth();
     const {fontSizes, colors} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
 
@@ -60,8 +60,38 @@ const SignIn = () => {
     }
 
     const handleForgotPassword = () => {
-        console.log("Forgot Password")
-    }
+        if (!email) {
+            Alert.prompt('Passwort vergessen?', 'Gib bitte deine E-Mail-Adresse ein, damit wir dir helfen können.', [
+                {
+                    text: 'Abbrechen',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Passwort zurücksetzen',
+                    onPress: async (inputEmail: string) => {
+                        await resetPassword(inputEmail);
+                    },
+                },
+            ]);
+        } else {
+            Alert.alert(
+                'Passwort zurücksetzen?',
+                `Möchtest du das Passwort für ${email} zurücksetzen?`,
+                [
+                    {
+                        text: 'Abbrechen',
+                        style: 'cancel',
+                    },
+                    {
+                        text: 'Ja, bitte!',
+                        onPress: async () => {
+                            await resetPassword(email);
+                        },
+                    },
+                ]
+            );
+        }
+    };
 
     const handleNavigateToSignUp = () => {
         router.replace("/signUp");

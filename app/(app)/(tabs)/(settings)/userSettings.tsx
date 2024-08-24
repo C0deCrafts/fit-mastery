@@ -7,10 +7,12 @@ import {useAppStyle} from "@/context/AppStyleContext";
 import Card from "@/components/Card";
 import {router} from "expo-router";
 import {appStyles} from "@/constants/Styles";
+import {useAuth} from "@/context/AuthContext";
 
 const UserSettings = () => {
     const {colors, fontSizes} = useAppStyle();
     const defaultStyles = appStyles(fontSizes, colors);
+    const {user} = useAuth();
 
     return (
     <>
@@ -20,11 +22,11 @@ const UserSettings = () => {
                 <TitleCardContainer title={"Benutzerdaten"}>
                     <View style={styles.row}>
                         <Text style={defaultStyles.titleDescription}>Benutzername: </Text>
-                        <Text style={defaultStyles.description}>user.name</Text>
+                        <Text style={defaultStyles.description}>{user?.displayName}</Text>
                     </View>
                     <View style={styles.row}>
                         <Text style={defaultStyles.titleDescription}>E-Mail: </Text>
-                        <Text style={defaultStyles.description}>user.email</Text>
+                        <Text style={defaultStyles.description}>{user?.email}</Text>
                     </View>
                     <View style={styles.row}>
                         <Text style={defaultStyles.titleDescription}>Gewicht: </Text>

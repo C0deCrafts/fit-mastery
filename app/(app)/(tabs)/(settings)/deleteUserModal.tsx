@@ -8,18 +8,44 @@ import {router} from "expo-router";
 import {appStyles} from "@/constants/Styles";
 import Spacing from "@/components/spacing/Spacing";
 import {Loading} from "@/components/Loading";
+import {useEffect} from "react";
 
 const DeleteUserModal = () => {
     const {colors, fontSizes} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
     const defaultStyles = appStyles(fontSizes, colors);
-    const {deleteUserData, isLoading} = useAuth();
+    const {user, deleteUserData, isLoading} = useAuth();
+
+    useEffect(() => {
+        console.log("User: ", user);
+        console.log("User: ", user?.email);
+    }, []);
 
     // Handle user deletion
     const handleDeleteUser = async () => {
-        await deleteUserData().then(() => {
-            Alert.alert("Hinweis", "Dein Konto wurde erfolgreich gelöscht.");
-        });
+        Alert.prompt(
+            "Authentifizieren",
+            "Bitte gib dein Passwort ein, um das Löschen deines Kontos zu bestätigen.",
+            [
+                {
+                    text: "Abbrechen",
+                    style: "cancel",
+                },
+                {
+                    text: "OK",
+                    onPress: async (password: string) => {
+                        if(user?.email && password){
+                            await deleteUserData(user?.email, password).then(() => {
+                                Alert.alert("Hinweis", "Dein Konto wurde erfolgreich gelöscht.");
+                            });
+                        } else {
+                            Alert.alert("Hinweis", "Bitte gib dein Passwort ein, um fortzufahren.");
+                        }
+                    },
+                },
+            ],
+            'secure-text' // This will render the input as a password field on iOS
+        );
     };
 
     return (
