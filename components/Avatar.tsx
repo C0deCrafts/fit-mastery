@@ -48,6 +48,7 @@ const Avatar = ({
                 width: imageRadius,
                 height: imageRadius,
                 borderRadius: imageRadius / 2,
+                backgroundColor: colors.secondary,
             }]}>
                 <Image
                     source={user?.photoURL}
@@ -55,10 +56,11 @@ const Avatar = ({
                         width: imageRadius,
                         height: imageRadius,
                         borderRadius: imageRadius / 2,
+                        tintColor: colors.baseColor,
                     }}
                     contentFit={"cover"}
-                    placeholder={blurHash}
-                    transition={1000}
+                    //placeholder={blurHash}
+                    //transition={1000}
                     cachePolicy={"memory-disk"}
                 />
                 {isCameraVisible && (

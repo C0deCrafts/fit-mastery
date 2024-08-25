@@ -7,6 +7,8 @@ import Card from "@/components/Card";
 import {useState} from "react";
 import Spacing from "@/components/spacing/Spacing";
 import {appStyles} from "@/constants/Styles";
+import {router} from "expo-router";
+import TitleCardContainer from "@/components/TitleCardContainer";
 
 const TrainingSettings = () => {
     const {colors, fontSizes} = useAppStyle();
@@ -20,27 +22,25 @@ const TrainingSettings = () => {
 
     return (
         <>
-            <Header title="Trainingsdaten" backButtonVisible/>
+            <Header title="Apple Health" backButtonVisible/>
             <AppSymbolBackground>
                 <View style={defaultStyles.container}>
                     <Spacing bottom={ThemeSizes.Spacing.fromHeader}/>
-                    <Card style={{
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                    }}>
-                        <View style={styles.row}>
-                            <Text style={defaultStyles.titleDescription}>Körpergröße: </Text>
-                            <Text style={defaultStyles.description}>173cm</Text>
+                    <TitleCardContainer title="Synchronisiere FitMastery">
+                        <View style={defaultStyles.descriptionContainer}>
+                            <Text style={defaultStyles.description}><Text
+                                style={defaultStyles.titleDescription}>Hinweis: </Text>
+                                Hier kannst du die Daten auswählen, welche aus Apple Health übertragen oder dort gespeichert werden.</Text>
                         </View>
-                        <View style={styles.row}>
-                            <Text style={defaultStyles.titleDescription}>Körpergewicht: </Text>
-                            <Text style={defaultStyles.description}>kein Gewicht festgelegt</Text>
-                        </View>
-                        <View style={styles.row}>
-                            <Text style={defaultStyles.titleDescription}>Körperfettanteil: </Text>
-                            <Text style={defaultStyles.description}>30%</Text>
-                        </View>
-                    </Card>
+                        <Spacing bottom={ThemeSizes.Spacing.verticalSmall}/>
+                        <Card image={Icons.steps}
+                              hasSwitch
+                              onSwitchValueChange={toggleSwitch}
+                              switchValue={switchValue}
+                              thumbColor={switchValue}
+                              label="Schrittzähler aktivieren"
+                        />
+                    </TitleCardContainer>
                 </View>
             </AppSymbolBackground>
         </>

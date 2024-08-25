@@ -33,10 +33,13 @@ const DeleteUserModal = () => {
                 },
                 {
                     text: "OK",
-                    onPress: async (password: string) => {
+                    onPress: async (password: string | undefined) => {
                         if(user?.email && password){
                             await deleteUserData(user?.email, password).then(() => {
                                 Alert.alert("Hinweis", "Dein Konto wurde erfolgreich gelöscht.");
+                            }).catch((error) => {
+                                Alert.alert("Fehler", "Beim Löschen des Kontos ist ein Fehler aufgetreten.");
+                                console.error("Error deleting user: ", error);
                             });
                         } else {
                             Alert.alert("Hinweis", "Bitte gib dein Passwort ein, um fortzufahren.");
@@ -49,7 +52,7 @@ const DeleteUserModal = () => {
     };
 
     return (
-        <View style={defaultStyles.container}>
+        <View style={[defaultStyles.container, {backgroundColor: colors.primary}]}>
             <View style={styles.topBar}/>
             <ScrollView
                 showsVerticalScrollIndicator={false}
@@ -132,6 +135,6 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
             fontSize: fontSizes.title3,
             fontFamily: Fonts.semiBold,
             color: colors.baseColor,
-        }
+        },
     });
 };

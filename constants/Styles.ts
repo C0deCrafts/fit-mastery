@@ -25,5 +25,12 @@ export const appStyles = (fontSizes: FontSize, colors: Colors) => {
         separator: {
             //height: StyleSheet.hairlineWidth,
         },
+        blurView: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+        },
     });
 };
