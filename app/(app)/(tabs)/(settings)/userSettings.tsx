@@ -48,6 +48,7 @@ const UserSettings = () => {
                             Du wirst informiert, sobald diese Funktionen zur Verfügung stehen.</Text>
                     </View>
                     <Card image={Icons.text} label="Benutzername ändern"/>
+                    <Card image={Icons.camera} label="Profilfoto löschen"/>
                     <Card image={Icons.weight} label="Aktuelles Gewicht ändern"/>
                     <Card image={Icons.trash} label="Benutzerkonto löschen" onPress={handleDelete} clickable/>
                 </TitleCardContainer>

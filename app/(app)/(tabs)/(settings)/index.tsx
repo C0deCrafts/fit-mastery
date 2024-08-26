@@ -152,7 +152,7 @@ const SettingsIndex = () => {
                     >
                         <Card style={styles.userCard}>
                             <Avatar pressableDisabled={false}
-                                    isCameraVisible={false}
+                                    isCameraVisible={true}
                                     imageRadius={80}
                             />
                             <View>
@@ -163,7 +163,6 @@ const SettingsIndex = () => {
                             </View>
                         </Card>
                         <TitleCardContainer title="Persönliche Einstellungen">
-                            <Card image={Icons.camera} label="Profilbild ändern"/>
                             <Card image={Icons.profile} label="Kontodetails"
                                   onPress={() => router.push("/(tabs)/userSettings")} clickable/>
                         </TitleCardContainer>
