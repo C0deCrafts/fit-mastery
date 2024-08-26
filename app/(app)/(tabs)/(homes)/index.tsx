@@ -1,25 +1,20 @@
-import { View, Text } from 'react-native';
-import CustomButton from "@/components/CustomButton";
-import {useAuth} from "@/context/AuthContext";
-import {useEffect} from "react";
-import {router} from "expo-router";
+import {View, Text, StatusBar} from "react-native";
+import AppSymbolBackground from "@/components/background/AppSymbolBackground";
+import {useAppStyle} from "@/context/AppStyleContext";
 
 export default function HomeIndex() {
-    const {signOut} = useAuth();
-
-    useEffect(() => {
-        console.log("HOME: cangoback? ", router.canGoBack())
-    }, []);
-
-
-    const handleLogout = async () => {
-        await signOut();
-    }
+    const {colorScheme} = useAppStyle();
+    const statusBarStyle = colorScheme === "light" ? "dark-content" : "light-content";
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Welcome to the Chat Stack</Text>
-            <CustomButton title="Logout" onPress={handleLogout}/>
-        </View>
+        <>
+            <AppSymbolBackground>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Text>Welcome to the Home Stack</Text>
+                </View>
+                <StatusBar barStyle={statusBarStyle}/>
+            </AppSymbolBackground>
+
+        </>
     );
 }

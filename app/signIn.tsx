@@ -11,7 +11,7 @@ import AppImageBackground from "@/components/background/AppImageBackground";
 import {useState} from "react";
 import Spacing from "@/components/spacing/Spacing";
 import {Fonts, ThemeSizes} from "@/constants";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/buttons/CustomButton";
 import {useAuth} from "@/context/AuthContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
@@ -20,7 +20,7 @@ import {router} from "expo-router";
 import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";
 import SignInForm from "@/components/auth/SignInForm";
-
+import {Loading} from "@/components/Loading";
 /**
  * SignIn is a page that provides a user interface for signing into an account.
  * It includes an email and password form, social media login options, and navigation to the sign-up screen.
@@ -35,7 +35,7 @@ const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {isLoading, signIn} = useAuth();
+    const {isLoading, signIn, resetPassword} = useAuth();
     const {fontSizes, colors} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
 
@@ -59,8 +59,42 @@ const SignIn = () => {
     }
 
     const handleForgotPassword = () => {
-        console.log("Forgot Password")
-    }
+        if (!email) {
+            Alert.prompt('Passwort vergessen?', 'Gib bitte deine E-Mail-Adresse ein, damit wir dir helfen können.', [
+                {
+                    text: 'Abbrechen',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Passwort zurücksetzen',
+                    onPress: async (inputEmail?: string) => {
+                        if (inputEmail) { // Überprüfen, ob inputEmail definiert ist
+                            await resetPassword(inputEmail);
+                        } else {
+                            Alert.alert('Fehler', 'E-Mail-Adresse ist erforderlich, um das Passwort zurückzusetzen.');
+                        }
+                    },
+                },
+            ]);
+        } else {
+            Alert.alert(
+                'Passwort zurücksetzen?',
+                `Möchtest du das Passwort für ${email} zurücksetzen?`,
+                [
+                    {
+                        text: 'Abbrechen',
+                        style: 'cancel',
+                    },
+                    {
+                        text: 'Ja, bitte!',
+                        onPress: async () => {
+                            await resetPassword(email);
+                        },
+                    },
+                ]
+            );
+        }
+    };
 
     const handleNavigateToSignUp = () => {
         router.replace("/signUp");
@@ -87,7 +121,7 @@ const SignIn = () => {
                         <Text style={styles.textForgotPassword} onPress={handleForgotPassword}>Password
                             vergessen? </Text>
                         <Spacing bottom={ThemeSizes.Spacing.extraLarge}/>
-                        <CustomButton onPress={handleSignIn} title={"Login"} isLoading={isLoading}/>
+                        <CustomButton onPress={handleSignIn} title={"Login"}/>
                         <Spacing vertical={ThemeSizes.Spacing.verticalSmall}>
                             <Text style={styles.text}>oder</Text>
                         </Spacing>
@@ -104,6 +138,7 @@ const SignIn = () => {
                     <Spacing bottom={ThemeSizes.Spacing.extraDefault}/>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
+            {isLoading && <Loading/>}
         </AppImageBackground>
     )
 }

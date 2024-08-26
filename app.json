@@ -41,7 +41,14 @@
         }
       ],
       "@react-native-firebase/app",
-      "@react-native-firebase/auth"
+      "@react-native-firebase/auth",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "\nDie App greift auf Ihre Fotos zu, um Ihnen das Teilen mit Ihren Freunden zu ermöglichen. Außerdem können Sie ein Benutzerprofil einrichten.",
+          "cameraPermission": "\nDie App greift auf Ihre Kamera zu, um Ihnen das Teilen mit Ihren Freunden zu ermöglichen. Außerdem können Sie ein Benutzerprofil einrichten."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

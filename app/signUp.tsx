@@ -10,7 +10,7 @@ import AppImageBackground from "@/components/background/AppImageBackground";
 import {useState} from "react";
 import Spacing from "@/components/spacing/Spacing";
 import {Fonts, ThemeSizes} from "@/constants";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/buttons/CustomButton";
 import {useAuth} from "@/context/AuthContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
@@ -20,20 +20,17 @@ import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";
 import {isScreenHeightAtLeastIphone14} from "@/utils/styleContextUtils";
 import SignUpForm from "@/components/auth/SignUpForm";
-
+import {Loading} from "@/components/Loading";
 /**
  * SignUp is a page that provides a user interface for creating a new account.
- * It includes input fields for username, email, password, and password confirmation, as well as social media sign-up options.
+ * It includes a form for entering a username, email, password, and password confirmation,
+ * as well as social media sign-up options and navigation back to the sign-in screen.
  *
  * The component handles the following:
- * - User input validation to ensure all fields are filled out and passwords match.
+ * - User input for username, email, password, and password confirmation.
+ * - Validation to ensure all fields are filled and the passwords match before attempting to sign up.
  * - Social media sign-up options for Apple, Facebook, and Google.
- * - Navigation back to the login screen.
- *
- * @returns {JSX.Element} The rendered sign-up screen component.
- *
- * @example
- * <SignUp />
+ * - Navigation back to the sign-in screen.
  */
 const SignUp = () => {
     const [username, setUsername] = useState("");
@@ -97,7 +94,7 @@ const SignUp = () => {
                             handleSignUp={handleSignUp}
                         />
                         <Spacing bottom={ThemeSizes.Spacing.extraLarge}/>
-                        <CustomButton onPress={handleSignUp} title={"Registrieren"} isLoading={isLoading}/>
+                        <CustomButton onPress={handleSignUp} title={"Registrieren"}/>
                         <Spacing vertical={ThemeSizes.Spacing.verticalSmall}>
                             <Text style={styles.text}>oder</Text>
                         </Spacing>
@@ -114,6 +111,7 @@ const SignUp = () => {
                     </View>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
+            {isLoading && <Loading/>}
         </AppImageBackground>
     )
 }

@@ -32,6 +32,7 @@ import text from "@/assets/icons/ui/textbox_fill.png";
 import time from "@/assets/icons/ui/time_line.png";
 import trash from "@/assets/icons/actions/delete_fill.png";
 import unlock from "@/assets/icons/security/unlock_line.png";
+import up from "@/assets/icons/navigation/arrow_up_fill.png"
 import weight from "@/assets/icons/health/balance_fill.png";
 
 /**
@@ -121,6 +122,7 @@ export const NavigationIcons = {
     fastRewind,
     forward,
     logout,
+    up,
 };
 
 /**

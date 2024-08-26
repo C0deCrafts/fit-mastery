@@ -9,8 +9,9 @@ interface AppStyleContextType {
     colors: Colors;
     colorScheme: Theme;
     fontSizes: FontSize;
+    currentFontSize: string;
     changeBaseColor: (color: string) => void;
-    changeFontSize: (size: FontSize) => void;
+    changeFontSize: (size: string) => void;
     toggleTheme: () => void;
 }
 /**
@@ -40,6 +41,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
             colorButtonLabel: lightColors.lightNeutral
         }
     )
+    const [currentFontSize, setCurrentFontSize] = useState("large_default");
 
     /**
      * Loads the saved style settings from AsyncStorage when the component mounts.
@@ -99,30 +101,29 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
      *
      * @param {FontSize} size - The new font size to set.
      */
-    const changeFontSize = (size: FontSize) => {
+    const changeFontSize = (size: string) => {
             let newFontSizes;
             switch (size) {
-                case xSmall:
+                case "xSmall":
                     newFontSizes = xSmall;
                     break;
-                case small:
+                case "small":
                     newFontSizes = small;
                     break;
-                case medium:
+                case "medium":
                     newFontSizes = medium;
                     break;
-                case xLarge:
+                case "xLarge":
                     newFontSizes = xLarge;
                     break;
-                case xxLarge:
+                case "xxLarge":
                     newFontSizes = xxLarge;
                     break;
                 default:
                     newFontSizes = large_default;
             }
-
+            setCurrentFontSize(size); // save the current font size as string for the modal picker
             setFontSizes(newFontSizes);
-            //saveStyles('fontSize', size);
         };
 
     /**
@@ -138,6 +139,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
             colors,
             colorScheme,
             fontSizes,
+            currentFontSize,
             toggleTheme,
             changeBaseColor,
             changeFontSize

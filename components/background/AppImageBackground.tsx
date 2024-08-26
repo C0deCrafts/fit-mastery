@@ -10,7 +10,6 @@ import {ReactNode} from "react";
 interface ImageBackgroundContainerProps {
     children: ReactNode
 }
-
 /**
  * AppImageBackground Component
  *
@@ -37,9 +36,6 @@ const AppImageBackground = ({children}: ImageBackgroundContainerProps) => (
  * - image: Makes the background image cover the full container and centers the content within it.
  */
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     image: {
         flex: 1,
         paddingHorizontal: ThemeSizes.Spacing.horizontalDefault

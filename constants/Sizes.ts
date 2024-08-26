@@ -46,10 +46,14 @@ const Spacing = {
     extraExtraSmall: 5,
     /** Spacing from the header (15px) */
     fromHeader: 15,
+    /** Spacing from the bottom tabs (80px) */
+    fromBottomTabs: 80,
     /** Vertical spacing in the tab bar (10px) */
     tabBarVertical: 10,
     /** Horizontal spacing in the tab bar (10px) */
     tabBarHorizontal: 10,
+    /** Spacing between tab labels (2px) */
+    tabLabelSpacing: 2,
     /** Standard padding inside cards (10px) */
     cardPadding: 10,
     /** Large padding inside cards (20px) */
