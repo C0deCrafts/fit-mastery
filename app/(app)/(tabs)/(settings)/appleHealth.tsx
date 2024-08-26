@@ -25,7 +25,6 @@ const TrainingSettings = () => {
             <Header title="Apple Health" backButtonVisible/>
             <AppSymbolBackground>
                 <View style={defaultStyles.container}>
-                    <Spacing bottom={ThemeSizes.Spacing.fromHeader}/>
                     <TitleCardContainer title="Synchronisiere FitMastery">
                         <View style={defaultStyles.descriptionContainer}>
                             <Text style={defaultStyles.description}><Text

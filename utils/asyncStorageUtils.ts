@@ -30,7 +30,6 @@ export const saveStyles = async (colorScheme: Theme, fontSizes: FontSize, baseCo
         console.error('Fehler beim Speichern der Styles:', e);
     }
 };
-
 /**
  * Loads the saved app style settings from AsyncStorage and applies them to the app.
  * This includes restoring the color scheme, font size, and base color.

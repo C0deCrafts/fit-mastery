@@ -1,9 +1,9 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native'
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Image} from "expo-image";
-import {blurHash} from "@/utils/common"
 import {Icons} from "@/constants";
 import {useAuth} from "@/context/AuthContext";
+import useAccountSettings from "@/hooks/useAccountSettings";
 
 interface AvatarProps {
     imageRadius?: number;
@@ -36,12 +36,17 @@ const Avatar = ({
                 }: AvatarProps) => {
     const {colors} = useAppStyle();
     const {user} = useAuth();
+    const {selectImage, localPhotoURL} = useAccountSettings();
 
-    const handleProfileImageChange = () => {
-        console.log("Change Profile Image - later in AccountSettings Context")
-    }
+    // imageSource mit einem Fallback auf einen leeren String (wird benötigt damit die UI sofort mit dem neuen Bild gerendert wird)
+    const imageSource = localPhotoURL ? {uri: localPhotoURL} : user?.photoURL ? {uri: user.photoURL} : null;
+
+   // Überprüfe, ob das Bild "avatar.png" ist, wenn imageSource nicht null ist
+    const isAvatarImage = imageSource?.uri && imageSource.uri.includes('avatar.png');
+
+
     return (
-        <TouchableOpacity onPress={handleProfileImageChange}
+        <TouchableOpacity onPress={selectImage}
                           disabled={pressableDisabled}
         >
             <View style={[styles.imageContainer, {
@@ -51,12 +56,12 @@ const Avatar = ({
                 backgroundColor: colors.secondary,
             }]}>
                 <Image
-                    source={user?.photoURL}
+                    source={imageSource}
                     style={{
                         width: imageRadius,
                         height: imageRadius,
                         borderRadius: imageRadius / 2,
-                        tintColor: colors.baseColor,
+                        tintColor: isAvatarImage ? colors.baseColor : undefined, // Wende tintColor nur an, wenn es sich um "avatar.png" handelt
                     }}
                     contentFit={"cover"}
                     //placeholder={blurHash}

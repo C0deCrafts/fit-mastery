@@ -37,9 +37,8 @@ const DeleteUserModal = () => {
                         if(user?.email && password){
                             await deleteUserData(user?.email, password).then(() => {
                                 Alert.alert("Hinweis", "Dein Konto wurde erfolgreich gelöscht.");
-                            }).catch((error) => {
-                                Alert.alert("Fehler", "Beim Löschen des Kontos ist ein Fehler aufgetreten.");
-                                console.error("Error deleting user: ", error);
+                            }).catch((err) => {
+                                Alert.alert("Falsches Passwort", "Das eingegebene Passwort ist falsch. Bitte versuche es erneut.");
                             });
                         } else {
                             Alert.alert("Hinweis", "Bitte gib dein Passwort ein, um fortzufahren.");

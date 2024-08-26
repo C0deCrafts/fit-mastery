@@ -9,7 +9,20 @@ interface ScrollToTopButtonProps {
     buttonStyle: any;
     onPress: () => void;
 }
-
+/**
+ * ScrollToTopButton is a reusable component that displays a button to scroll to the top of the screen.
+ * The button is animated and can be customized with different styles and actions.
+ *
+ * @param {ScrollToTopButtonProps} props - The properties for configuring the ScrollToTopButton component.
+ * @param {any} props.buttonStyle - The animated style applied to the button, typically used to control visibility.
+ * @param {() => void} props.onPress - The function to call when the button is pressed.
+ *
+ * @example
+ * <ScrollToTopButton
+ *    buttonStyle={animatedStyle}
+ *    onPress={() => scrollToTop()}
+ * />
+ */
 const ScrollToTopButton = ({buttonStyle, onPress}:ScrollToTopButtonProps) => {
     const {colors} = useAppStyle();
     const styles = dynamicStyles(colors);

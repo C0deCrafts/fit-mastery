@@ -12,8 +12,8 @@ import AppSymbolBackground from "@/components/background/AppSymbolBackground";
 import Card from "@/components/Card";
 import Avatar from "@/components/Avatar";
 import TitleCardContainer from "@/components/TitleCardContainer";
-import RadioButton from "@/components/RadioButton";
-import ColorPicker from "@/components/ColorPicker";
+import RadioButton from "@/components/buttons/RadioButton";
+import ColorPicker from "@/components/buttons/ColorPicker";
 import CustomModal from "@/components/modal/CustomModal";
 import {Stack, router} from "expo-router";
 import {appStyles} from "@/constants/Styles";
@@ -151,7 +151,7 @@ const SettingsIndex = () => {
                     }}
                     >
                         <Card style={styles.userCard}>
-                            <Avatar pressableDisabled={true}
+                            <Avatar pressableDisabled={false}
                                     isCameraVisible={false}
                                     imageRadius={80}
                             />

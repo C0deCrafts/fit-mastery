@@ -11,7 +11,7 @@ import AppImageBackground from "@/components/background/AppImageBackground";
 import {useState} from "react";
 import Spacing from "@/components/spacing/Spacing";
 import {Fonts, ThemeSizes} from "@/constants";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/buttons/CustomButton";
 import {useAuth} from "@/context/AuthContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
@@ -21,7 +21,6 @@ import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";
 import SignInForm from "@/components/auth/SignInForm";
 import {Loading} from "@/components/Loading";
-
 /**
  * SignIn is a page that provides a user interface for signing into an account.
  * It includes an email and password form, social media login options, and navigation to the sign-up screen.
@@ -68,8 +67,12 @@ const SignIn = () => {
                 },
                 {
                     text: 'Passwort zurücksetzen',
-                    onPress: async (inputEmail: string) => {
-                        await resetPassword(inputEmail);
+                    onPress: async (inputEmail?: string) => {
+                        if (inputEmail) { // Überprüfen, ob inputEmail definiert ist
+                            await resetPassword(inputEmail);
+                        } else {
+                            Alert.alert('Fehler', 'E-Mail-Adresse ist erforderlich, um das Passwort zurückzusetzen.');
+                        }
                     },
                 },
             ]);

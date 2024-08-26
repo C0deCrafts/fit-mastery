@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import {Tabs} from 'expo-router';
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Icons, ThemeSizes} from "@/constants";
 import TabIcon from "@/components/navigation/TabBarIcon";

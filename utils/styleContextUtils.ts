@@ -25,7 +25,12 @@ export const isDarkColor = (color: string): boolean => {
     console.log(`[isDarkColor] Checked color: ${color}, isDark: ${isDark}`);
     return isDark;
 };
-
+/**
+ * Retrieves an array of user-selectable colors for the color picker based on the current theme colors.
+ *
+ * @param {Colors} colors - The color palette of the current theme.
+ * @returns {string[]} - An array of color strings that the user can select from.
+ */
 export const userColors = (colors: Colors): string[] => {
     return [
         colors.red,
@@ -83,9 +88,14 @@ export const getCorrespondingBaseColor = (
     // Return the corresponding color from the target color palette or a default color
     return matchingColorKey ? targetColors[matchingColorKey] : targetColors.teal_2;
 };
-
-
-export const isScreenHeightAtLeastIphone14 = () => {
+/**
+ * Checks if the screen height is at least the height of an iPhone 14.
+ * This function can be used to determine if the device's screen size is
+ * at least as large as that of an iPhone 14, for layout adjustments.
+ *
+ * @returns {boolean} - Returns true if the screen height is at least that of an iPhone 14, otherwise false.
+ */
+export const isScreenHeightAtLeastIphone14 = (): boolean => {
     const screenHeight = Dimensions.get("screen").height;
     const iPhoneXHeight = 844;
     return screenHeight >= iPhoneXHeight;

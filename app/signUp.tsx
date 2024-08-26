@@ -10,7 +10,7 @@ import AppImageBackground from "@/components/background/AppImageBackground";
 import {useState} from "react";
 import Spacing from "@/components/spacing/Spacing";
 import {Fonts, ThemeSizes} from "@/constants";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/buttons/CustomButton";
 import {useAuth} from "@/context/AuthContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
