@@ -29,7 +29,7 @@ export const uploadImageToFirebase = async (pathToFile: string, uid: string): Pr
 export const deleteUserPhoto = async (uid: string): Promise<void> => {
     const photoRef = storage().ref(`images/avatars/${uid}`);
     await photoRef.delete().catch(err => {
-        console.log("Kein Foto zum löschen vorhanden!");
+        console.log("Kein Foto zum löschen vorhanden: ", err);
     });
 };
 /**

@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native';
 import AppSymbolBackground from "@/components/background/AppSymbolBackground";
 import Header from "@/components/header/Header";
+import MuscleHighlighter from "@/components/muscleHighlighter/MuscleHighlighter";
 
 export default function ChatIndex() {
     return (
@@ -9,6 +10,7 @@ export default function ChatIndex() {
             <AppSymbolBackground>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <Text>Welcome to the Chat Stack</Text>
+                    <MuscleHighlighter/>
                 </View>
             </AppSymbolBackground></>
     );

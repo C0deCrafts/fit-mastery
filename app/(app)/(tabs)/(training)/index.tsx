@@ -1,15 +1,28 @@
-import { View, Text } from 'react-native';
+import {FlatList} from 'react-native';
 import AppSymbolBackground from "@/components/background/AppSymbolBackground";
 import Header from "@/components/header/Header";
+import {useExercises} from "@/context/ExercisesContext";
+import {useEffect} from "react";
+import ExerciseItem from "@/components/ExerciseItem";
 
 export default function TrainingIndex() {
+    const {exercises} = useExercises();
+
+
+    useEffect(() => {
+        console.log("Exercises:", exercises);
+    }, [exercises]);
+
     return (
         <>
             <Header title="Training"/>
             <AppSymbolBackground>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Welcome to the Chat Stack</Text>
-                </View>
+                <FlatList
+                    data={exercises}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => <ExerciseItem item={item} />}
+                    //contentContainerStyle={styles.listContent}
+                />
             </AppSymbolBackground>
         </>
     );

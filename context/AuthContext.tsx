@@ -27,7 +27,7 @@ interface AuthProviderProps {
 // Initialisiere den Authentifizierungskontext
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({children}: AuthProviderProps) {
+export const AuthProvider = ({children}: AuthProviderProps)=> {
     // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
@@ -143,7 +143,7 @@ export function AuthProvider({children}: AuthProviderProps) {
     );
 }
 
-export function useAuth() {
+export const useAuth = () => {
     const context = useContext(AuthContext);
     if (!context) {
         throw new Error("useAuth must be used within an AuthProvider");

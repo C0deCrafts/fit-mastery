@@ -2,6 +2,8 @@ import {useFonts} from "expo-font";
 import {AppStyleProvider} from "@/context/AppStyleContext";
 import {Stack} from "expo-router";
 import {AuthProvider} from "@/context/AuthContext";
+import {ExercisesProvider} from "@/context/ExercisesContext";
+import {MuscleGroupProvider} from "@/context/MuscleGroupContext";
 
 // RootLayout component providing the main layout with authentication and style contexts
 
@@ -25,12 +27,16 @@ export default function RootLayout() {
     return (
         <AppStyleProvider>
             <AuthProvider>
-                <Stack screenOptions={{
-                    headerShown: false
-                }}>
-                    <Stack.Screen name="signIn"/>
-                    <Stack.Screen name="signUp"/>
-                </Stack>
+                <MuscleGroupProvider>
+                    <ExercisesProvider>
+                        <Stack screenOptions={{
+                            headerShown: false
+                        }}>
+                            <Stack.Screen name="signIn"/>
+                            <Stack.Screen name="signUp"/>
+                        </Stack>
+                    </ExercisesProvider>
+                </MuscleGroupProvider>
             </AuthProvider>
         </AppStyleProvider>
     );
