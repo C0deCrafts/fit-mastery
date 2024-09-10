@@ -1,18 +1,22 @@
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {Image} from 'expo-image';
 import {router} from 'expo-router';
-import {Fonts, Icons} from "@/constants";
+import {Fonts, Icons, ThemeSizes} from "@/constants";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {useAuth} from "@/context/AuthContext";
 import FocusAwareStatusBar from "@/components/header/FocusAwareStatusBar";
+import TrainingDropDownMenu from "@/components/TrainingDropDownMenu";
 
 interface HeaderProps {
     title: string;
     backButtonVisible?: boolean;
     logOutButtonVisible?: boolean;
     chatAvatarVisible?: boolean;
+    customDropdownMenuVisible?: boolean;
+    customIcon?: string;
     imageUrl?: string;
+    handleCustomButtonClick: (key: string) => void;
 }
 /**
  * Header is a reusable component that displays a customizable header for the app.
@@ -74,6 +78,58 @@ const Header = (props:HeaderProps) => {
                         <Image source={Icons.logout} style={styles.icon} />
                     </TouchableOpacity>
                 )}
+                {props.customDropdownMenuVisible && (
+                    <View style={styles.dropDownMenuContainer}>
+                        <TrainingDropDownMenu onSelect={props.handleCustomButtonClick}
+                                                items={[
+
+                                                    {
+                                                        "key": "0",
+                                                        "title": "Eigenen Plan erstellen",
+                                                        "icon": "figure.highintensity.intervaltraining",
+                                                        "group": "Plan-Verwaltung"
+                                                    },
+                                                    {
+                                                        "key": "1",
+                                                        "title": "Plan hinzufügen",
+                                                        "icon": "plus",
+                                                        "group": "Plan-Verwaltung"
+                                                    },
+                                                    {
+                                                        "key": "2",
+                                                        "title": "Plan bearbeiten",
+                                                        "icon": "pencil",
+                                                        "group": "Plan-Verwaltung"
+                                                    },
+                                                    {
+                                                        "key": "3",
+                                                        "title": "Plan mit Freunden teilen",
+                                                        "icon": "shared.with.you",
+                                                        "group": "Plan-Funktionen"
+                                                    },
+                                                    {
+                                                        "key": "4",
+                                                        "title": "Favoriten verwalten",
+                                                        "icon": "heart",
+                                                        "group": "Plan-Funktionen"
+                                                    },
+                                                    {
+                                                        "key": "5",
+                                                        "title": "FitRandomizer starten",
+                                                        "icon": "flame.circle.fill",
+                                                        "group": "Extras"
+                                                    },
+                                                    {
+                                                        "key": "6",
+                                                        "title": "Alle Übungen anzeigen",
+                                                        "icon": "books.vertical.fill",
+                                                        "group": "Extras"
+                                                    }
+                                                ]}>
+                            <Image source={props.customIcon} style={styles.icon} />
+                        </TrainingDropDownMenu>
+                    </View>
+                )}
                 <Text style={styles.headerTitle} numberOfLines={1} ellipsizeMode="tail">{props.title}</Text>
             </View>
         </>
@@ -85,7 +141,7 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
         headerContainer: {
             width: "100%",
             //120
-            height: 110,
+            height: ThemeSizes.Sizes.header,
             backgroundColor: colors.baseColor,
             alignItems: 'center',
             justifyContent: 'flex-end',
@@ -118,6 +174,12 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
             textAlign: "center",
         },
         logoutButtonContainer: {
+            position: "absolute",
+            top: 73,
+            right: 10,
+            zIndex: 1,
+        },
+        dropDownMenuContainer: {
             position: "absolute",
             top: 73,
             right: 10,

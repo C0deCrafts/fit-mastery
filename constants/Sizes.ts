@@ -69,6 +69,8 @@ const Sizes = {
     largeIcon: 40,
     /** Size for small icons (15px) */
     smallIcon: 15,
+    /** Size for default icons (35px) */
+    defaultIcon: 32,
     /** Size for lock icons (20px) */
     lockIcon: 20,
     /** Background image position when there is a header (0px) */
@@ -80,7 +82,9 @@ const Sizes = {
     /** Height of the buttons (60px) */
     buttonHeight: 60,
     /** Size of the logo (200px) */
-    logo: 130
+    logo: 130,
+    /** Size of the header (110px) */
+    header: 110,
 };
 
 export const ThemeSizes = {

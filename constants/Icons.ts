@@ -10,6 +10,7 @@ import diary from "@/assets/icons/productivity/notebook_2_fill.png";
 import facebook from "@/assets/icons/social/facebook_fill.png";
 import fastForward from "@/assets/icons/navigation/fast_forward_fill.png";
 import fastRewind from "@/assets/icons/navigation/fast_rewind_fill.png";
+import favorite from "@/assets/icons/actions/heart.png";
 import fitness from "@/assets/icons/health/fitness_fill.png";
 import friends from "@/assets/icons/ui/comment_2_fill.png";
 import fontsize from "@/assets/icons/ui/font_size_line.png";
@@ -20,6 +21,9 @@ import lock from "@/assets/icons/security/lock_line.png";
 import logout from "@/assets/icons/navigation/arrow_to_right_line.png";
 import menu from "@/assets/icons/actions/menu_fill.png";
 import moon from "@/assets/icons/ui/moon_line.png";
+import more from "@/assets/icons/actions/more_3_line.png";
+import more_filled from "@/assets/icons/actions/more_3_fill.png";
+import more_simple from "@/assets/icons/actions/more_1_fill.png"
 import night from "@/assets/icons/ui/moon_line.png";
 import profile from "@/assets/icons/ui/user_2_fill.png";
 import rest from "@/assets/icons/ui/sleep_line.png";
@@ -53,7 +57,11 @@ import weight from "@/assets/icons/health/balance_fill.png";
 export const ActionIcons = {
     add,
     back,
+    favorite,
     menu,
+    more,
+    more_filled,
+    more_simple,
     repeat,
     setting,
     trash,

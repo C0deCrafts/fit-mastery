@@ -4,6 +4,7 @@ import {darkColors, lightColors} from "@/constants/Colors";
 import {xSmall, small, medium, large_default, xLarge, xxLarge} from "@/constants/FontSizes";
 import {Colors, FontSize, Theme} from "@/constants/types/styleTypes";
 import {loadStyles, saveStyles} from "@/utils/asyncStorageUtils";
+import {Appearance} from "react-native";
 
 interface AppStyleContextType {
     colors: Colors;
@@ -131,6 +132,7 @@ export const AppStyleProvider = ({children}: AppStyleProviderProps) => {
      */
     const toggleTheme = () => {
         const newColorScheme = colorScheme === "light" ? "dark" : "light";
+        Appearance.setColorScheme(newColorScheme);
         setColorScheme(newColorScheme);
     };
 
