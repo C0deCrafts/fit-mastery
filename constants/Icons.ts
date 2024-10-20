@@ -10,7 +10,9 @@ import diary from "@/assets/icons/productivity/notebook_2_fill.png";
 import facebook from "@/assets/icons/social/facebook_fill.png";
 import fastForward from "@/assets/icons/navigation/fast_forward_fill.png";
 import fastRewind from "@/assets/icons/navigation/fast_rewind_fill.png";
-import favorite from "@/assets/icons/actions/heart.png";
+import favorite_filled from "@/assets/icons/actions/star_fill.png";
+import favorite from "@/assets/icons/actions/star_line.png";
+import favorite_slash from "@/assets/icons/actions/star_slash_fill.png"
 import fitness from "@/assets/icons/health/fitness_fill.png";
 import friends from "@/assets/icons/ui/comment_2_fill.png";
 import fontsize from "@/assets/icons/ui/font_size_line.png";
@@ -58,6 +60,8 @@ export const ActionIcons = {
     add,
     back,
     favorite,
+    favorite_filled,
+    favorite_slash,
     menu,
     more,
     more_filled,

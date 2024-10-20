@@ -10,7 +10,7 @@ export const appStyles = (fontSizes: FontSize, colors: Colors) => {
             paddingHorizontal: ThemeSizes.Spacing.horizontalDefault,
         },
         descriptionContainer: {
-            marginBottom: ThemeSizes.Spacing.titleSpacingBottom
+            marginBottom: ThemeSizes.Spacing.verticalSmall,
         },
         description: {
             fontSize: fontSizes.subhead,
@@ -32,5 +32,11 @@ export const appStyles = (fontSizes: FontSize, colors: Colors) => {
             bottom: 0,
             right: 0,
         },
+        baseContainerStyles: {
+
+        },
+        baseTextStyles: {
+
+        }
     });
 };

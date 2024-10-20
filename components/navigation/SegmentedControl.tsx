@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import {TouchableOpacity, View, Text, StyleSheet, Animated, LayoutChangeEvent} from "react-native";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
@@ -11,7 +11,12 @@ interface SegmentedControlProps {
     slideAnim: Animated.Value  // Externer Animationswert
 }
 
-const SegmentedControl = (props: SegmentedControlProps) => {
+/** HINWEIS - NOCH TESTEN!!
+ * Um unnötige Re-renders zu vermeiden, könnten wir die SegmentedControl-Komponente
+ * mit React.memo umschließen. Das sorgt dafür, dass diese Komponente nur neu gerendert wird,
+ * wenn sich ihre Props ändern.
+ */
+const SegmentedControl = memo((props: SegmentedControlProps) => {
     const {fontSizes, colors} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
     const [containerWidth, setContainerWidth] = useState(0);  // Gesamtbreite des Containers
@@ -54,12 +59,12 @@ const SegmentedControl = (props: SegmentedControlProps) => {
             ))}
         </View>
     );
-};
+});
 
 export default SegmentedControl;
 
 const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
-    function addTransparencyToRGB(rgbColor, alpha) {
+    function addTransparencyToRGB(rgbColor: string, alpha: number) {
         // Entfernt "rgb(" und ")" und wandelt die Farbe in ein Array von Werten um
         const rgbValues = rgbColor.replace(/[^\d,]/g, '').split(',');
 

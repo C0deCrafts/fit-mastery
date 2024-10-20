@@ -1,7 +1,7 @@
 import {Tabs} from 'expo-router';
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Icons, ThemeSizes} from "@/constants";
-import TabIcon from "@/components/navigation/TabBarIcon";
+import TabIcon from "@/components/navigation/bottomtabs/TabBarIcon";
 
 export default function TabsLayout() {
     const {colors} = useAppStyle();

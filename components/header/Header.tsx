@@ -1,30 +1,39 @@
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import {Image} from 'expo-image';
 import {router} from 'expo-router';
-import {Fonts, Icons, ThemeSizes} from "@/constants";
+import {Fonts, Icons} from "@/constants";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {useAuth} from "@/context/AuthContext";
 import FocusAwareStatusBar from "@/components/header/FocusAwareStatusBar";
-import TrainingDropDownMenu from "@/components/TrainingDropDownMenu";
+import TrainingDropDownMenu from "@/components/header/dropdownmenu/TrainingDropDownMenu";
 
-interface HeaderProps {
-    title: string;
-    backButtonVisible?: boolean;
-    logOutButtonVisible?: boolean;
-    chatAvatarVisible?: boolean;
-    customDropdownMenuVisible?: boolean;
-    customIcon?: string;
-    imageUrl?: string;
-    handleCustomButtonClick: (key: string) => void;
+export interface HeaderBaseProps {
+    headerTitle: string; // title text to display in the header
+    customDropdownMenuVisible?: boolean; // Wenn true, ist das Dropdown-Menü sichtbar und die Props sind verpflichtend
+    dropdownMenuItems?: Array<{
+        key: string;
+        title: string;
+        icon: string;
+        iconAndroid?: string;
+        group?: string;
+    }>;
+    onSelectItem?: (key: string) => void;
 }
+
+interface HeaderProps extends HeaderBaseProps {
+    backButtonVisible?: boolean; // If true, displays a back button in the header
+    logOutButtonVisible?: boolean; // If true, displays a logout button in the header
+    chatAvatarVisible?: boolean; // If true, displays a chat avatar in the header
+}
+
 /**
  * Header is a reusable component that displays a customizable header for the app.
  * The header includes options for a back button, logout button, and a chat avatar,
  * with dynamic styles based on the current theme's font sizes and colors.
  *
  * @param {HeaderProps} props - The properties for configuring the Header component.
- * @param {string} props.title - The title text to display in the header.
+ * @param {string} props.headerTitle - The title text to display in the header.
  * @param {boolean} [props.backButtonVisible=false] - Optional: If true, displays a back button in the header.
  * @param {boolean} [props.logOutButtonVisible=false] - Optional: If true, displays a logout button in the header.
  * @param {boolean} [props.chatAvatarVisible=false] - Optional: If true, displays a chat avatar in the header.
@@ -32,14 +41,14 @@ interface HeaderProps {
  *
  * @example
  * <Header
- *    title="Home"
+ *    headerTitle="Home"
  *    backButtonVisible={true}
  *    logOutButtonVisible={true}
  *    chatAvatarVisible={true}
  *    imageUrl="https://example.com/avatar.jpg"
  * />
  */
-const Header = (props:HeaderProps) => {
+const Header = (props: HeaderProps) => {
     const {signOut} = useAuth();
     const {fontSizes, colors} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
@@ -58,14 +67,17 @@ const Header = (props:HeaderProps) => {
     }
 
     return (
-        <>
             <View style={styles.headerContainer}>
                 <FocusAwareStatusBar barStyle={statusBarStyle}/>
+
+                {/* Display the back button if the prop is true */}
                 {props.backButtonVisible && (
                     <TouchableOpacity onPress={handleGoBack} style={styles.backButtonContainer}>
                         <Image source={Icons.back} style={styles.backButton}/>
                     </TouchableOpacity>
                 )}
+
+                {/* Display the chat avatar if the prop is true */}
                 {props.chatAvatarVisible && (
                     <>
                         <TouchableOpacity onPress={handleShowAvatar} style={styles.avatarButtonContainer}>
@@ -73,66 +85,29 @@ const Header = (props:HeaderProps) => {
                         </TouchableOpacity>
                     </>
                 )}
+
+                {/* Display the logout button if the prop is true */}
                 {props.logOutButtonVisible && (
                     <TouchableOpacity onPress={handleLogout} style={styles.logoutButtonContainer}>
-                        <Image source={Icons.logout} style={styles.icon} />
+                        <Image source={Icons.logout} style={styles.icon}/>
                     </TouchableOpacity>
                 )}
-                {props.customDropdownMenuVisible && (
-                    <View style={styles.dropDownMenuContainer}>
-                        <TrainingDropDownMenu onSelect={props.handleCustomButtonClick}
-                                                items={[
 
-                                                    {
-                                                        "key": "0",
-                                                        "title": "Eigenen Plan erstellen",
-                                                        "icon": "figure.highintensity.intervaltraining",
-                                                        "group": "Plan-Verwaltung"
-                                                    },
-                                                    {
-                                                        "key": "1",
-                                                        "title": "Plan hinzufügen",
-                                                        "icon": "plus",
-                                                        "group": "Plan-Verwaltung"
-                                                    },
-                                                    {
-                                                        "key": "2",
-                                                        "title": "Plan bearbeiten",
-                                                        "icon": "pencil",
-                                                        "group": "Plan-Verwaltung"
-                                                    },
-                                                    {
-                                                        "key": "3",
-                                                        "title": "Plan mit Freunden teilen",
-                                                        "icon": "shared.with.you",
-                                                        "group": "Plan-Funktionen"
-                                                    },
-                                                    {
-                                                        "key": "4",
-                                                        "title": "Favoriten verwalten",
-                                                        "icon": "heart",
-                                                        "group": "Plan-Funktionen"
-                                                    },
-                                                    {
-                                                        "key": "5",
-                                                        "title": "FitRandomizer starten",
-                                                        "icon": "flame.circle.fill",
-                                                        "group": "Extras"
-                                                    },
-                                                    {
-                                                        "key": "6",
-                                                        "title": "Alle Übungen anzeigen",
-                                                        "icon": "books.vertical.fill",
-                                                        "group": "Extras"
-                                                    }
-                                                ]}>
-                            <Image source={props.customIcon} style={styles.icon} />
+                {/* Display the custom dropdown menu if the prop is true */}
+                {props.customDropdownMenuVisible && props.dropdownMenuItems && props.onSelectItem && (
+                    <View style={styles.dropDownMenuContainer}>
+                        <TrainingDropDownMenu
+                            onSelectItem={props.onSelectItem}
+                            items={props.dropdownMenuItems}
+                        >
+                            <Image source={Icons.more_simple} style={styles.icon}/>
                         </TrainingDropDownMenu>
                     </View>
                 )}
-                <Text style={styles.headerTitle} numberOfLines={1} ellipsizeMode="tail">{props.title}</Text>
+
+                {/* Display the header title */}
+                <Text style={styles.headerTitle} numberOfLines={1} ellipsizeMode="tail">{props.headerTitle}</Text>
             </View>
-        </>
     );
 };
 
@@ -141,7 +116,7 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
         headerContainer: {
             width: "100%",
             //120
-            height: ThemeSizes.Sizes.header,
+            height: 110,
             backgroundColor: colors.baseColor,
             alignItems: 'center',
             justifyContent: 'flex-end',
@@ -180,16 +155,17 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
             zIndex: 1,
         },
         dropDownMenuContainer: {
-            position: "absolute",
-            top: 73,
-            right: 10,
-            zIndex: 1,
+                position: "absolute",
+                top: 73,
+                right: 10,
+                zIndex: 1,
         },
         icon: {
             width: 28,
             height: 28,
             tintColor: colors.colorButtonLabel,
-        }
+        },
+
     });
 }
 

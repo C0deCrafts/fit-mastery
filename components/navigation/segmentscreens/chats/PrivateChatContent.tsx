@@ -1,21 +1,20 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
-import Calendar from "@/components/progress/Calendar";
 
-const OverviewContent = () => {
+const PrivateChatContent = () => {
     const {fontSizes, colors} = useAppStyle();
     const styles = dynamicStyles(fontSizes, colors);
 
     return (
         <View style={styles.container}>
-            <Calendar/>
+            <Text>Private Chats</Text>
         </View>
     );
 };
 
-export default OverviewContent;
+export default PrivateChatContent;
 
 const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
     return StyleSheet.create({
