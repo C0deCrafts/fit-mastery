@@ -15,7 +15,7 @@ import CustomButton from "@/components/buttons/CustomButton";
 import {useAuth} from "@/context/AuthContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
 import {useAppStyle} from "@/context/AppStyleContext";
-import SocialMediaContainer from "@/components/navigation/SocialMediaContainer";
+import SocialMediaContainer from "@/components/auth/SocialMediaContainer";
 import {router} from "expo-router";
 import {Image} from "expo-image";
 import {Logo} from "@/constants/Images";

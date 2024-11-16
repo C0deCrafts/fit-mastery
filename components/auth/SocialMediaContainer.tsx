@@ -1,7 +1,7 @@
 import {StyleSheet, View} from "react-native"
 import {SocialIcons} from "@/constants/Icons";
 import {ThemeSizes} from "@/constants";
-import SocialMediaButton from "@/components/navigation/SocialMediaButton";
+import SocialMediaButton from "@/components/auth/SocialMediaButton";
 
 interface SocialMediaContainerProps {
     onPressApple: () => void,

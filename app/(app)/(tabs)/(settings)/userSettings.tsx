@@ -20,7 +20,7 @@ const UserSettings = () => {
 
     return (
     <>
-        <Header title="Benutzerdaten" backButtonVisible/>
+        <Header headerTitle="Benutzerdaten" backButtonVisible/>
         <AppSymbolBackground>
             <View style={defaultStyles.container}>
                 <TitleCardContainer title={"Benutzerdaten"}>

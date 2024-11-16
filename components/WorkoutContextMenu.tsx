@@ -1,19 +1,22 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import * as ContextMenu from "zeego/context-menu";
 import { useRouter } from 'expo-router';
+import {ReactNode} from "react";
 
 interface WorkoutContextMenuProps {
-    children: React.ReactNode;
+    children: ReactNode;
     isFavorite: boolean; // Neuer prop, der angibt, ob das Workout in den Favoriten ist
-    onRemoveFromFavorites: () => void;
-    onAddToFavorites: () => void;
-    onDeleteWorkout: () => void;
-    onShareWorkout: () => void;
+    erasable: boolean; // gibt an, ob card löschbar ist
+    onAddToFavorites?: () => void;
+    onRemoveFromFavorites?: () => void;
+    onDeleteWorkout?: () => void;
+    onShareWorkout?: () => void;
 }
 
 const WorkoutContextMenu = ({
                                 children,
                                 isFavorite,
+                                erasable,
                                 onRemoveFromFavorites,
                                 onAddToFavorites,
                                 onDeleteWorkout,
@@ -33,40 +36,45 @@ const WorkoutContextMenu = ({
 
     return (
         <ContextMenu.Root>
-            <ContextMenu.Trigger>
+            <ContextMenu.Trigger action="longPress">
                 <Pressable
                     onPress={handleNavigate}  // Bei kurzem Drücken navigieren
-                    onLongPress={handleContextMenu}  // Bei langem Drücken Kontextmenü öffnen
+                    //onLongPress={handleContextMenu}  // Bei langem Drücken Kontextmenü öffnen
                 >
                     {children}
                 </Pressable>
             </ContextMenu.Trigger>
 
-            <ContextMenu.Content>
+            <ContextMenu.Content
+                loop={false}
+                alignOffset={0}
+                avoidCollisions={true}
+                collisionPadding={10}
+            >
                 {/* Bedingte Anzeige basierend auf dem Favoritenstatus */}
                 {isFavorite ? (
-                    <ContextMenu.Item key="remove-favorite" onPress={onRemoveFromFavorites}>
+                    <ContextMenu.Item key="remove-favorite" onSelect={onRemoveFromFavorites}>
                         <ContextMenu.ItemTitle>Von Favoriten entfernen</ContextMenu.ItemTitle>
                         <ContextMenu.ItemIcon
                             ios={{
-                                name: "heart.slash",
+                                name: "star.slash.fill",
                                 pointSize: 18,
                             }}
                         />
                     </ContextMenu.Item>
                 ) : (
-                    <ContextMenu.Item key="add-favorite" onPress={onAddToFavorites}>
+                    <ContextMenu.Item key="add-favorite" onSelect={onAddToFavorites}>
                         <ContextMenu.ItemTitle>Zu Favoriten hinzufügen</ContextMenu.ItemTitle>
                         <ContextMenu.ItemIcon
                             ios={{
-                                name: "heart",
+                                name: "star",
                                 pointSize: 18,
                             }}
                         />
                     </ContextMenu.Item>
                 )}
 
-                <ContextMenu.Item key="share" onPress={onShareWorkout}>
+                <ContextMenu.Item key="share" onSelect={onShareWorkout}>
                     <ContextMenu.ItemTitle>Teile dein Workout</ContextMenu.ItemTitle>
                     <ContextMenu.ItemSubtitle>mit deinen Freunden</ContextMenu.ItemSubtitle>
                     <ContextMenu.ItemIcon
@@ -77,15 +85,17 @@ const WorkoutContextMenu = ({
                     />
                 </ContextMenu.Item>
 
-                <ContextMenu.Item key="delete" onPress={onDeleteWorkout}>
-                    <ContextMenu.ItemTitle>Löschen</ContextMenu.ItemTitle>
-                    <ContextMenu.ItemIcon
-                        ios={{
-                            name: "trash.fill",
-                            pointSize: 18,
-                        }}
-                    />
-                </ContextMenu.Item>
+                {erasable &&
+                    <ContextMenu.Item key="delete" onSelect={onDeleteWorkout}>
+                        <ContextMenu.ItemTitle>Löschen</ContextMenu.ItemTitle>
+                        <ContextMenu.ItemIcon
+                            ios={{
+                                name: "trash.fill",
+                                pointSize: 18,
+                            }}
+                        />
+                    </ContextMenu.Item>
+                }
             </ContextMenu.Content>
         </ContextMenu.Root>
     );

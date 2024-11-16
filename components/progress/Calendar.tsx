@@ -3,7 +3,7 @@ import {Image} from "expo-image";
 import {useEffect, useState} from "react";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {Colors, FontSize} from "@/constants/types/styleTypes";
-import {Fonts, Icons} from "@/constants";
+import {Fonts, Icons, ThemeSizes} from "@/constants";
 import {format} from "date-fns";
 import {de} from "date-fns/locale";
 import WeekStats from "@/components/progress/WeekStats";
@@ -67,12 +67,12 @@ const createStyles = (fontSizes: FontSize, colors: Colors) => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: 15,
+            marginTop: ThemeSizes.Spacing.fromHeader,
             marginBottom: 10,
         },
         titleText: {
-            fontFamily: Fonts.semiBold,
             fontSize: fontSizes.title3,
+            fontFamily: Fonts.semiBold,
             color: colors.label,
             textAlign: "center"
         },

@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native'
 import * as DropdownMenu from 'zeego/dropdown-menu'
-import {ReactElement, ReactNode} from "react";
+import {ReactElement} from "react";
 
 export interface DropDownMenuProps {
     items: Array<{ // items for the dropdown menu

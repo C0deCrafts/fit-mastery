@@ -77,8 +77,8 @@ const dynamicStyles = (fontSizes: FontSize, colors: Colors) => {
             tintColor: colors.label, // Adjust icon color if needed
         },
         iconLeft: {
-            width: ThemeSizes.Sizes.smallIcon, // Set the icon width
-            height: ThemeSizes.Sizes.smallIcon, // Set the icon height
+            width: ThemeSizes.Sizes.smallIcon + 5, // Set the icon width
+            height: ThemeSizes.Sizes.smallIcon + 5, // Set the icon height
             tintColor: colors.baseColor, // Adjust icon color if needed
         },
     });

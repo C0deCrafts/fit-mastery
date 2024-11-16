@@ -20,7 +20,7 @@ const TrainingSettings = () => {
 
     return (
         <>
-            <Header title="Trainingsdaten" backButtonVisible/>
+            <Header headerTitle="Trainingsdaten" backButtonVisible/>
             <AppSymbolBackground>
                 <View style={defaultStyles.container}>
                     <Spacing bottom={ThemeSizes.Spacing.fromHeader}/>

@@ -22,7 +22,7 @@ const TrainingSettings = () => {
 
     return (
         <>
-            <Header title="Apple Health" backButtonVisible/>
+            <Header headerTitle="Apple Health" backButtonVisible/>
             <AppSymbolBackground>
                 <View style={defaultStyles.container}>
                     <TitleCardContainer title="Synchronisiere FitMastery">

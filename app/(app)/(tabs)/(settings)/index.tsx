@@ -131,7 +131,7 @@ const SettingsIndex = () => {
             <Stack.Screen options={{
                 header: () => (
                     <Animated.View style={headerAnimatedStyle}>
-                        <Header title="Einstellungen" logOutButtonVisible/>
+                        <Header headerTitle="Einstellungen" logOutButtonVisible/>
                     </Animated.View>
                 ),
             }}
