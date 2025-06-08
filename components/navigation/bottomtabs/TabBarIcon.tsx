@@ -61,6 +61,7 @@ const dynamicStyles = (fontSizes: FontSize) => {
             alignItems: "center",
             justifyContent: "center",
             gap: ThemeSizes.Spacing.tabLabelSpacing,
+            minWidth: 90
         },
         text: {
             fontSize: fontSizes.caption1,
