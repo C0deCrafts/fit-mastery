@@ -61,3 +61,5 @@ expo-env.d.ts
 credentials/
 
 # No android/ or ios/ folders ignored because they are needed for the project
+ios/
+android/
