@@ -2,6 +2,8 @@ import {View, Text, StatusBar} from "react-native";
 import AppSymbolBackground from "@/components/background/AppSymbolBackground";
 import {useAppStyle} from "@/context/AppStyleContext";
 import {updateGifUrls, uploadExercisesToFirebase} from "@/utils/scripts/adminExerciseUtils";
+import MuscleHighlighter from "@/components/muscleHighlighter/MuscleHighlighter";
+import {useMuscleGroup} from "@/context/MuscleGroupContext";
 
 export default function HomeIndex() {
     const {colorScheme} = useAppStyle();
@@ -16,13 +18,26 @@ export default function HomeIndex() {
         updateGifUrls("Brust").catch(error => console.error("Error updating GIF URLs:", error));
     };
 
+    const { activeMuscles } = useMuscleGroup();
+
     return (
         <>
             <AppSymbolBackground>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Welcome to the Home Stack</Text>
-                    <Text onPress={handleUploadExercises}>Upload DATA</Text>
-                    <Text onPress={handleUpdateGifUrls}>Update GIF URL</Text>
+                    {/*<Text>Welcome to the Home Stack</Text>*/}
+                    {/*<Text onPress={handleUploadExercises}>Upload DATA</Text>*/}
+                    {/*<Text onPress={handleUpdateGifUrls}>Update GIF URL</Text>*/}
+
+                    {activeMuscles.length > 0 && (
+                        <View style={{ marginTop: 20 }}>
+                            <Text>Aktive Muskeln:</Text>
+                            {activeMuscles.map((id) => (
+                                <Text key={id}>{id}</Text>
+                            ))}
+                        </View>
+                    )}
+
+                    <MuscleHighlighter/>
                 </View>
                 <StatusBar barStyle={statusBarStyle}/>
             </AppSymbolBackground>
